@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>YG1BSH - Index</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@700;900&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Logis
+  * Updated: Aug 30 2023 with Bootstrap v5.3.1
+  * Template URL: https://bootstrapmade.com/logis-bootstrap-logistics-website-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+
+  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  
+
+  <script>
+    
+    $(function() {
+        // $("#includeHeader").load("header.html");
+       $("#includeFooter").load("footer.html");
+    });
+ </script>
+</head>
+
+<body>
+
+  <!-- <div w3-include-html="header.html"></div> -->
+
+  <!-- ======= Header ======= -->
+  <!-- <div id="includeHeader"></div> -->
+  
+<header id="header" class="header d-flex align-items-center fixed-top">
+  <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+    <a href="index.html" class="logo d-flex align-items-center">
+      <!-- Uncomment the line below if you also wish to use an image logo -->
+      <img src="assets/img/logo.png" alt="">
+      <h1>YG1BSH</h1>
+    </a>
+
+    <!-- <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+    <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i> -->
+    
+    <!-- <nav id="navbar" class="navbar">
+      <ul>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+          <ul>
+            <li><a href="#">Drop Down 1</a></li>
+            <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+              <ul>
+                <li><a href="#">Deep Drop Down 1</a></li>
+                <li><a href="#">Deep Drop Down 2</a></li>
+                <li><a href="#">Deep Drop Down 3</a></li>
+                <li><a href="#">Deep Drop Down 4</a></li>
+                <li><a href="#">Deep Drop Down 5</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Drop Down 2</a></li>
+            <li><a href="#">Drop Down 3</a></li>
+            <li><a href="#">Drop Down 4</a></li>
+          </ul>
+        </li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a class="get-a-quote" href="get-a-quote.html">Get a Quote</a></li>
+      </ul>
+    </nav> -->
+    <!-- .navbar -->
+
+  </div>
+</header><!-- End Header -->
+<!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="hero d-flex align-items-center">
+    <div class="container">
+      <div class="row gy-4 d-flex justify-content-between">
+        <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
+          <h2 data-aos="fade-up">Find Your QSL</h2>
+          <p data-aos="fade-up" data-aos-delay="100">Nice to QSO with you</p>
+
+          <form action="#dataqso" class="form-search d-flex align-items-stretch mb-3" data-aos="fade-up" data-aos-delay="200">
+            <input type="text" class="form-control" style="text-transform: uppercase; font-size: 36px; font-weight: bold; color: blue" id="callsign" name="callsign" placeholder="your callsign">
+            <button type="submit" class="btn btn-primary" id="btnSearch">Search</button>
+          </form>
+
+          <div class="row gy-4" data-aos="fade-up" data-aos-delay="400">
+
+            <div class="col-lg-3 col-6">
+              <div class="stats-item text-center w-100 h-100">
+                <!-- <span data-purecounter-start="0" data-purecounter-end="165" id="dataDXCC" data-purecounter-duration="1" class="purecounter"></span> -->
+                <span id="dataDXCC"></span>
+                <p>DXCC</p>
+              </div>
+            </div><!-- End Stats Item -->
+
+            <div class="col-lg-3 col-6">
+              <div class="stats-item text-center w-100 h-100">
+                <!-- <span data-purecounter-start="0" data-purecounter-end="3202" data-purecounter-duration="1" class="purecounter"></span> -->
+                <span id="dataQSO"></span>
+                <p>QSO</p>
+              </div>
+            </div><!-- End Stats Item -->
+
+            <div class="col-lg-3 col-6">
+              <div class="stats-item text-center w-100 h-100">
+                <!-- <span data-purecounter-start="0" data-purecounter-end="2950" data-purecounter-duration="1" class="purecounter"></span> -->
+                <span id="dataCallsign"></span>
+                <p>Confirmed</p>
+              </div>
+            </div><!-- End Stats Item -->
+
+            <!-- <div class="col-lg-2 col-6">
+              <div class="stats-item text-center w-100 h-100">
+                <span id="dataMode"></span>
+                <p>Mode</p>
+              </div>
+            </div>
+
+            <div class="col-lg-2 col-6">
+              <div class="stats-item text-center w-100 h-100">
+                <span id="dataBand"></span>
+                <p>Band</p>
+              </div>
+            </div> -->
+
+          </div>
+        </div>
+
+        <div class="col-lg-5 order-1 order-lg-2 hero-img" data-aos="zoom-out">
+          <img src="assets/img/hero-img.svg" class="img-fluid mb-3 mb-lg-0" alt="">
+        </div>
+
+      </div>
+    </div>
+  </section><!-- End Hero Section -->
+
+  <main id="main">
+
+    
+
+    
+    <!-- ======= Horizontal Pricing Section ======= -->
+    <section id="dataqso" class="horizontal-pricing pt-0">
+        <div class="container" data-aos="fade-up">
+  
+          <div class="section-header">
+            <span id="qsodataspan">QSO Data</span>
+            <h2 id="qsodatahead">QSO Data</h2>
+            <h3 id="callsignData"></h3>
+          </div>
+          <!-- <div id="callsignData" class="pt-0"></div> -->
+          <div id="qsoDetail"></div>
+          
+  
+        </div>
+      </section><!-- End Horizontal Pricing Section -->
+
+
+    <!-- ======= QSO Section ======= -->
+    <!-- <section id="qso" class="pricing pt-0">
+        <div class="container" data-aos="fade-up">
+  
+          <div class="section-header">
+            <span>Logger</span>
+            <h2>Logger</h2>
+  
+          </div>
+  
+          <div class="row gy-4">
+  
+            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+              <div class="pricing-item">
+                <iframe align="top" frameborder="0" height="650" scrolling="yes" src="https://logbook.qrz.com/lbstat/YG1BSH/" width="100%"></iframe>
+
+                <a href="https://www.qrz.com/db/yg1bsh" class="buy-btn" target="_blank">To qrz.com page</a>
+              </div>
+            </div>
+  
+            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+              <div class="pricing-item featured">
+                <iframe height="650" scrolling="auto" src="https://www.hrdlog.net/hrdlogframe.aspx?user=YG1BSH&amp;lastqso=20&amp;qsomap=&amp;options=search;disablelinks;" width="100%"></iframe>
+                <a href="#" class="buy-btn">To hrdlog.net page</a>
+              </div>
+            </div>
+          </div>
+  
+        </div>
+    </section> -->
+
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <!-- <div id="includeFooter"></div> -->
+
+  <!-- ======= Footer ======= -->
+<footer id="footer" class="footer">
+    <div class="container" style="text-align: center;">
+      <div class="row gy-4" style="text-align: center;">
+        <div class="col-lg-5 col-md-12 footer-info" >
+          <a href="index.html" class="logo align-items-center">
+            <span >YG1BSH</span>
+          </a>
+          <!-- <p class="logo d-flex">YG1BSH</p> -->
+          <p>Indonesian Amateur Radio</p>
+          <div class="social-links d-flex mt-4">
+            <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+
+        <!-- <div class="col-lg-2 col-6 footer-links">
+          <h4>Useful Links</h4>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About me</a></li>
+            <li><a href="#">QRZ.COM</a></li>
+            <li><a href="#">LOTW</a></li>
+            <li><a href="#">Privacy policy</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-6 footer-links">
+          <h4>Our Services</h4>
+          <ul>
+            <li><a href="#">Web Design</a></li>
+            <li><a href="#">Web Development</a></li>
+            <li><a href="#">Product Management</a></li>
+            <li><a href="#">Marketing</a></li>
+            <li><a href="#">Graphic Design</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+          <h4>Contact Us</h4>
+          <p>
+            A108 Adam Street <br>
+            New York, NY 535022<br>
+            United States <br><br>
+            <strong>Phone:</strong> +1 5589 55488 55<br>
+            <strong>Email:</strong> info@example.com<br>
+          </p>
+
+        </div> -->
+
+      </div>
+    </div>
+
+    <div class="container mt-4">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Logis</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      </div>
+    </div>
+</footer>
+  <!-- End Footer -->
+
+  
+  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.js"></script>
+
+  <script type="text/javascript">
+    const params = new URLSearchParams(document.location.search);
+    let callsign = params.get("callsign");
+
+    // console.log('entered callsign: ', callsign);
+
+    const apiUrl = 'https://script.google.com/macros/s/AKfycbwVv4n8IjQOcjlb4XztNRIhVwF2lbDtC0nKljOt3Cm5aRyZwZdgHk7laGL2HvETglhi/exec';
+    const btnSearch = document.getElementById('btnSearch');
+    let judulKolom = [];
+    let qsoData = [];
+    let callsignData = [];
+    let summaryData = {};
+    let dxcc = document.querySelector('#dataDXCC');
+    let qso = document.querySelector('#dataQSO');
+    let call = document.querySelector('#dataCallsign');
+    // let mode = document.querySelector('#dataMode');
+    // let band = document.querySelector('#dataBand');
+    
+    // console.log('dxcc: ', dxcc.dataset.purecounterEnd);
+    // dxcc.dataset.purecounterEnd = '200';
+    // let xdxcc = '300';
+    
+
+    // const o = params.get("o");
+    // console.info(s); //show C
+    // console.log('callsign: ', callsign);
+
+    // getQSOData('JR2IGV');
+    console.log('callsign: ', callsign);
+    callsign != null ? getQSOData(callsign) : '' ;
+
+    window.jsPDF = window.jspdf.jsPDF;
+    
+	  btnSearch.addEventListener('click', function(){
+        callsign = document.getElementById('callsign').value.toUpperCase();
+        document.getElementById('qsoDetail').innerHTML = '';
+        if (callsign != '' && callsign.length > 3) { 
+          // console.log('callsign: ', callsign);
+          getQSOData(callsign);
+        }
+    })
+
+    getSummaryData();
+    function getSummaryData() {
+            // const apiUrl    = 'https://script.google.com/macros/s/AKfycbyypbdXfKT34_tsl_cz5OyL5MQs4nvMH1kXXmFi8V0dyrYxPujIxqSIWt77wg3XQlXA/exec';
+            const action    = '?action=read';
+            const callsign  = '&callsign=summary'; 
+            $.ajax({
+              url : apiUrl+action+callsign,
+              
+              method : "GET",
+              success: function(data){
+                // console.log(JSON.parse(JSON.stringify(data)));
+                summaryData = JSON.parse(JSON.stringify(data.records[0]));
+                // console.log(summaryData);
+                // document.getElementById("dataDXCC").textContent = summaryData.DXCC;
+                dxcc.textContent  = summaryData.DXCC;
+                call.textContent  = summaryData.CALLSIGN;
+                qso.textContent  = summaryData.QSO;
+                // mode.textContent  = summaryData.MODE;
+                // band.textContent  = summaryData.BAND;
+                if (summaryData.length > 0) {
+                    // $('#dataDXCC').innerHTML = summaryData.DXCC;
+                    // document.getElementById("dataDXCC").textContent = summaryData.DXCC;
+                    // document.getElementById("dataDXCC").text = summaryData.DXCC;
+                    // dxcc.dataset.purecounterEnd = summaryData.DXCC;
+                    // 
+                    // judulKolom = setJudulKolom(qsoData);
+                    // console.log('judulKolom: ', judulKolom);
+                    // showAdifData(qsoData, judulKolom);
+                    // showSummaryData(qsoData);
+                }
+              },
+              error : function(request, status, error) {
+                console.log(error);
+              }
+            });
+        }
+
+    // getQSOData(callsign)
+    function getQSOData(call) {
+            // const apiUrl    = 'https://script.google.com/macros/s/AKfycbwY0umafNVZqRd9Py5dgJbxp20-V7DP9QMj5jd3-zffU8x9fvsZIEpbuMZCscGhQcXz/exec';
+            document.getElementById('callsignData').innerHTML = '';
+            const action    = '?action=read';
+            const callsign  = '&callsign='+call; 
+            document.querySelector('#qsodataspan').textContent = call + ' QSO DATA';
+            document.querySelector('#qsodatahead').textContent = call + ' QSO DATA';
+            $.ajax({
+              url : apiUrl+action+callsign,
+              
+              method : "GET",
+            //   data : {edit_data: jsonData},
+                // data: function() {
+                //                 action = 'read';
+                                
+                // },
+              success: function(data){
+                //alert(data);
+                // console.log('qsoData: ', data);
+                qsoData = JSON.parse(JSON.stringify(data.records[1]));
+                callsignData = JSON.parse(JSON.stringify(data.records[0][0]));
+                // console.log('qsoData: ', qsoData);
+                if (qsoData.length > 0) {
+                    judulKolom = setJudulKolom(qsoData);
+                    // console.log('judulKolom: ', judulKolom);
+                    // showAdifData(qsoData, judulKolom);
+                    document.querySelector('#qsodataspan').textContent = call + ' QSO DATA (' + qsoData.length + ')';
+                    document.querySelector('#qsodatahead').textContent = call + ' QSO DATA (' + qsoData.length + ')';
+                    showQSODetail(qsoData, callsignData);
+                }
+              },
+              error : function(request, status, error) {
+                console.log(error);
+              }
+            });
+        }
+
+        setJudulKolom = (data) => {
+            let judul = [];
+            // console.log(data.length);
+            // console.log(Object.keys(data)); 
+
+            for (let x=0; x < data.length; x++) {
+                let temp = Object.keys(data[x]);
+                judul = judul.concat(temp);
+            }
+            // filter unique judul kolom
+            judul = judul.filter((item, pos) => judul.indexOf(item) === pos);
+            // console.log(judul);
+            return judul;
+        }
+
+        
+
+        function showQSODetail(data, callsign) {
+            // console.log('qsoData.length: ', qsoData.length);
+            // console.log('dataCallsign: ', callsign);
+            let delay = 100;
+            let html = '';
+            let featured, mt_4, warna_text ;
+            // html += `<p>${callsign[1]} ${callsign[2]} - ${callsign[3]}</p>`;
+            html += `${callsign[1]} ${callsign[2]} - ${callsign[3]}`;
+            
+            document.getElementById('callsignData').innerHTML = html;
+
+            html = '';
+            for (let i=0; i<data.length; i++) {
+                let thn = data[i].QSO_DATE.toString().substring(0,4);
+                let bln = getMonthName(data[i].QSO_DATE.toString().substring(4,6));
+                let tgl = data[i].QSO_DATE.toString().substring(6,8);
+
+                let jam = data[i].TIME_ON.toString().substring(0,2);
+                let mnt = data[i].TIME_ON.toString().substring(4,6);
+                // let rst = data[i].RST_SENT.toFixed(3);
+                let freq = data[i].FREQ.toFixed(3);
+
+                // console.log(tgl,'-',bln,'-', thn);
+                // console.log('oke ..');
+                mt_4 = (i == 0) ? '' : 'mt-4';
+                featured    = (i % 2 == 0) ? '' : 'featured';
+                warna_text  = (i % 2 == 0) ? 'black' : 'white';
+                html += 
+                    `<div class="row gy-4 pricing-item ${featured} ${mt_4}" data-aos="fade-up" data-aos-delay="${delay}">`+
+                        '<div class="col-lg-9 d-flex align-items-center justify-content-center">'+
+                            `<table width="100%" style="color: ${warna_text};">`+
+                                '<thead style="text-align: center; ">'+
+                                    `<th>DATE</th>`+
+                                    '<th>TIME (UTC)</th>'+
+                                    '<th>MODE</th>'+
+                                    '<th>BAND</th>'+
+                                    '<th>FREQ</th>'+
+                                    '<th>RST</th>'+
+                                    // '<th>RCV</th>'+
+                                '</thead>'+
+                                '<tbody style="text-align: center">'+
+                                    `<td>${tgl} ${bln} ${thn}</td>`+
+                                    `<td>${jam}:${mnt}</td>`+
+                                    `<td>${data[i].MODE}</td>`+
+                                    `<td>${data[i].BAND}</td>`+
+                                    `<td>${freq}</td>`+
+                                    `<td>${data[i].RST_SENT}</td>`+
+                                    // '<td>-11</td>'+
+                                '</tbody>'+
+                            '</table>'+
+                        '</div>'+
+                        '<div class="col-lg-3 d-flex align-items-center justify-content-center">'+
+                            // '<div class="text-center"><a href="#" class="buy-btn">QSL Card</a></div>'+
+                            `<button type="button" data-id="${data[i].ROW_ID}" onclick="downloadQSL(this)" class="btn buy-btn text-center">QSL Card</button>`+
+                        '</div>'+
+                    '</div>';
+                delay += 100;
+            }
+            document.getElementById('qsoDetail').innerHTML = html;
+        }
+
+        downloadQSL = (e) => {
+          let row_id = $(e).attr('data-id');
+          const data = qsoData.filter(d => d.ROW_ID === row_id)[0] ;
+          // console.log('donwload request: ', row_id, ':', data);
+          // const urlPDF = "https://docs.google.com/presentation/d/1xugcSzl5oiHD4Ih9FUKH9J2duDINGw3jPB8q1NnybHc/export?format=pdf&portrait=false&size=b5&gridlines=false&slide=id.p1";
+          // window.location = urlPDF;
+          // window.open(urlPDF);
+          generatePDFQSLCard(data);
+          // Convert_HTML_To_PDF();
+          
+        }
+
+        generatePDFQSLCard = (data) => {
+          // console.log('data for QSLCard: ', data);
+          let thn = data.QSO_DATE.toString().substring(0,4);
+          let bln = getMonthName(data.QSO_DATE.toString().substring(4,6));
+          let tgl = data.QSO_DATE.toString().substring(6,8);
+          let tanggal = tgl+' '+bln+' '+thn;
+
+          let jam   = data.TIME_ON.toString().substring(0,2);
+          let mnt   = data.TIME_ON.toString().substring(4,6);
+          let waktu = jam+':'+mnt;
+          let freq  = data.FREQ.toFixed(3);
+          let band  = data.BAND;
+          let mode  = data.MODE;
+          let rst   = (data.RST_SENT).toString();
+
+          var fileName = 'qslcard.pdf';
+          var brsCallsign = 80;
+          var brsQSOData  = 116;
+
+          var doc = new jsPDF(
+            {
+              orientation: 'l',
+              unit: 'mm',
+              format: 'a5',
+              putOnlyUsedFonts:true
+            }
+          );
+          const myimage = "assets/img/QSLCard Template-1.png";
+          // const myimage = "https://drive.google.com/file/d/1EAxABicHo5y5kQhl23twlnDOqq5TjzVO/view?usp=sharing";
+          
+          // doc.internal.events.subscribe('addPage', function() { 
+          //   pageSize = view.doc.internal.pageSize; 
+            
+          // });
+
+          var pageSize = doc.internal.pageSize; 
+
+          // doc.setFont("libre", "bold");
+          // doc.text(20, 20, 'Hello world!');
+          // doc.text(20, 30, 'This is client-side Javascript to generate a PDF.');
+          // doc.addImage(myimage, "JPEG", 0, 0, 180, 180);
+
+          // Add new page
+          // doc.addPage();
+          // doc.text(20, 20, 'Visit CodexWorld.com');
+
+          doc.addImage(myimage, 'JPG', 0, 0, pageSize.width, pageSize.height); 
+          
+          // console.log(doc.getFontList());
+
+          doc.setFont("Helvetica", "Bold");
+          // doc.setFontStyle("bold");
+          // doc.setFont("helvetica");
+          // doc.setFontType("bold");
+          // // pdf.setFont("helvetica");
+          // pdf.setFontType("bold");
+          doc.setTextColor('red');
+          doc.setFontSize(48);
+          doc.text(data.CALL, pageSize.width/2, 80, 'center');
+
+          doc.setTextColor('blue');
+          doc.setFont("helvetica", "bold");
+          // doc.setFontType("bold");
+          doc.setFontSize(14);
+          doc.text(tanggal, 31, brsQSOData, 'center');
+          doc.text(waktu, 66, brsQSOData, 'center');
+          doc.text(band, 103, brsQSOData, 'center');
+          doc.text(freq, 128, brsQSOData, 'center');
+          doc.text(mode, 156, brsQSOData, 'center');
+          doc.text(rst, 185, brsQSOData, 'center');
+
+          window.open(doc.output('bloburl', fileName));
+
+          // Save the PDF
+          // doc.save('document.pdf');
+          // doc.output('pdfjsnewwindow', 'document.pdf');
+          // window.open(doc.output('bloburl'));
+        }
+        
+
+        // Convert HTML content to PDF
+        function Convert_HTML_To_PDF() {
+            var doc = new jsPDF();
+          
+            // Source HTMLElement or a string containing HTML.
+            var elementHTML = document.querySelector("#contentToPrint");
+
+            doc.html(elementHTML, {
+                callback: function(doc) {
+                    // Save the PDF
+                    doc.save('document-html.pdf');
+                },
+                margin: [10, 10, 10, 10],
+                autoPaging: 'text',
+                x: 0,
+                y: 0,
+                width: 190, //target width in the PDF document
+                windowWidth: 675 //window width in CSS pixels
+            });
+        }
+
+        function getMonthName(monthNumber) {
+          const date = new Date();
+          date.setMonth(monthNumber - 1);
+
+          return date.toLocaleString('en-US', {
+              month: 'short',
+          });
+        }
+
+        // console.log(getMonthName(1)); // 👉️ "January"
+
+        $(document).ready(function() {
+            // showQSODetail();
+            // console.log('qsoData.length: ', qsoData.length);
+            // console.log('qsoData: ', qsoData);
+
+            
+        })
+  </script>
+
+</body>
+
+</html>
