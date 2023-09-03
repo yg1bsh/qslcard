@@ -391,6 +391,7 @@
     function getQSOData(call) {
             // const apiUrl    = 'https://script.google.com/macros/s/AKfycbwY0umafNVZqRd9Py5dgJbxp20-V7DP9QMj5jd3-zffU8x9fvsZIEpbuMZCscGhQcXz/exec';
             document.getElementById('callsignData').innerHTML = '';
+            document.getElementById('qsoDetail').innerHTML = '';
             const action    = '?action=read';
             const callsign  = '&callsign='+call; 
             document.querySelector('#qsodataspan').textContent = call + ' QSO DATA';
@@ -409,6 +410,10 @@
                 // console.log('qsoData: ', data);
                 qsoData = JSON.parse(JSON.stringify(data.records[1]));
                 callsignData = JSON.parse(JSON.stringify(data.records[0][0]));
+                
+                let html = `${callsignData[1]} ${callsignData[2]} - ${callsignData[3]}`;
+                document.getElementById('callsignData').innerHTML = html;
+
                 // console.log('qsoData: ', qsoData);
                 if (qsoData.length > 0) {
                     judulKolom = setJudulKolom(qsoData);
@@ -417,6 +422,11 @@
                     document.querySelector('#qsodataspan').textContent = call + ' QSO DATA (' + qsoData.length + ')';
                     document.querySelector('#qsodatahead').textContent = call + ' QSO DATA (' + qsoData.length + ')';
                     showQSODetail(qsoData, callsignData);
+                } else {
+                  document.getElementById('qsoDetail').innerHTML = 
+                    `<div class="col-lg-12 d-flex align-items-center justify-content-center">`+
+                      `<h2 style="color: red";><strong>Sorry, no QSO Data</strong></h2>`+
+                      `</div>`;
                 }
               },
               error : function(request, status, error) {
@@ -449,10 +459,7 @@
             let html = '';
             let featured, mt_4, warna_text ;
             // html += `<p>${callsign[1]} ${callsign[2]} - ${callsign[3]}</p>`;
-            html += `${callsign[1]} ${callsign[2]} - ${callsign[3]}`;
             
-            document.getElementById('callsignData').innerHTML = html;
-
             html = '';
             for (let i=0; i<data.length; i++) {
                 let thn = data[i].QSO_DATE.toString().substring(0,4);
