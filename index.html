@@ -517,7 +517,7 @@
                     // showAdifData(qsoData, judulKolom);
                     document.querySelector('#qsodataspan').textContent = callsignData[0] + ' QSO DATA';
                     document.querySelector('#qsodatahead').textContent = callsignData[0] + ' QSO DATA';
-                    showQSODetail(qsoData, callsignData);
+                    showQSODetail(qsoData, callsignData, 1);
                     // generatePDFQSLCard(qsoData, callsignData);
                 } else {
                   document.getElementById('qsoDetail').innerHTML = 
@@ -549,7 +549,7 @@
 
         
 
-        function showQSODetail(data, callsign) {
+        function showQSODetail(data, callsign, type=0) {
             // console.log('qsoData.length: ', data.length);
             // console.log('dataCallsign: ', callsign);
             let delay = 100;
@@ -558,8 +558,8 @@
             // html += `<p>${callsign[1]} ${callsign[2]} - ${callsign[3]}</p>`;
             
             html = '';
-            let isHide = data.length == 1 ? " style='display:none' " : "  style='display:block'  ";
-            let lebarCol = data.length == 1 ? " col-lg-12 " : " col-lg-9 ";
+            let isHide = type == 1 ? " style='display:none' " : "  style='display:block'  ";
+            let lebarCol = type == 1 ? " col-lg-12 " : " col-lg-9 ";
             for (let i=0; i<data.length; i++) {
                 let thn = data[i].QSO_DATE.toString().substring(0,4);
                 let bln = getMonthName(data[i].QSO_DATE.toString().substring(4,6));
