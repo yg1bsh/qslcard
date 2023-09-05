@@ -111,7 +111,7 @@
       <div class="row gy-4 d-flex justify-content-between">
         <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
           <h2 data-aos="fade-up">Find Your QSL</h2>
-          <p data-aos="fade-up" data-aos-delay="100">Nice to QSO with you</p>
+          <p data-aos="fade-up" data-aos-delay="100" id="note">Nice to QSO with you</p>
 
           <form action="#dataqso" class="form-search d-flex align-items-stretch mb-3" data-aos="fade-up" data-aos-delay="200">
             <input type="text" class="form-control" style="text-transform: uppercase; font-size: 36px; font-weight: bold; color: blue" id="callsign" name="callsign" placeholder="your callsign">
@@ -370,6 +370,7 @@
 
     getSummaryData();
     function getSummaryData() {
+      document.getElementById("note").textContent = `Last update: `;
             // const apiUrl    = 'https://script.google.com/macros/s/AKfycbyypbdXfKT34_tsl_cz5OyL5MQs4nvMH1kXXmFi8V0dyrYxPujIxqSIWt77wg3XQlXA/exec';
             const action    = '?action=read';
             const callsign  = '&callsign=summary'; 
@@ -380,8 +381,10 @@
               success: function(data){
                 // console.log(JSON.parse(JSON.stringify(data)));
                 summaryData = JSON.parse(JSON.stringify(data.records[0]));
-                // console.log(summaryData);
-                // document.getElementById("dataDXCC").textContent = summaryData.DXCC;
+                console.log(summaryData);
+                const dateUpdate = summaryData.DATE_UPDATE.substring(0,10);
+                const timeUpdate = summaryData.TIME_UPDATE.substring(11,19);
+                document.getElementById("note").textContent = `Last update: ${dateUpdate} ${timeUpdate}`;
                 dxcc.textContent  = summaryData.DXCC;
                 call.textContent  = summaryData.CALLSIGN;
                 qso.textContent  = summaryData.QSO;
@@ -428,7 +431,8 @@
                 // console.log('qsoData: ', data);
                 qsoData = JSON.parse(JSON.stringify(data.records[1]));
                 callsignData = JSON.parse(JSON.stringify(data.records[0][0]));
-                
+                // console.log(callsignData);
+
                 let html = `${callsignData[1]} ${callsignData[2]} - ${callsignData[3]}`;
                 document.getElementById('callsignData').innerHTML = html;
 
