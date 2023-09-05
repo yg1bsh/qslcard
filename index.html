@@ -236,18 +236,18 @@
 <footer id="footer" class="footer">
     <div class="container" style="text-align: center;">
       <div class="row gy-4" style="text-align: center;">
-        <div class="col-lg-5 col-md-12 footer-info" >
+        <div class="col-lg-12 col-md-12 footer-info" >
           <a href="index.html" class="logo align-items-center">
             <span >YG1BSH</span>
           </a>
           <!-- <p class="logo d-flex">YG1BSH</p> -->
           <p>Indonesian Amateur Radio</p>
-          <div class="social-links d-flex mt-4">
+          <!-- <div class="social-links d-flex mt-4">
             <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
             <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
             <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
             <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
-          </div>
+          </div> -->
         </div>
 
         <!-- <div class="col-lg-2 col-6 footer-links">
@@ -317,11 +317,16 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.js"></script>
 
+
+
+
   <script type="text/javascript">
     const domain = document.location.origin;
     const params = new URLSearchParams(document.location.search);
     let callsign = params.get("callsign");
-    console.log('domain: ', domain);
+    let token = params.get("token");
+    
+    // console.log('domain: ', domain);
 
     // console.log('entered callsign: ', callsign);
 
@@ -347,8 +352,10 @@
     // console.log('callsign: ', callsign);
 
     // getQSOData('JR2IGV');
-    console.log('callsign: ', callsign);
+    // console.log('callsign: ', callsign);
+    // console.log('token: ', token);
     callsign != null ? getQSOData(callsign) : '' ;
+    token != null ? getTokenData(token) : '' ;
 
     window.jsPDF = window.jspdf.jsPDF;
     
@@ -446,6 +453,85 @@
             });
         }
 
+    // getQSOData(callsign)
+    function getTokenData(token) {
+      // document.getElementById('dataqso').scrollIntoView();
+      window.location.hash = '#footer'
+      const atob_token = atob(token);
+      // console.log('token: ', token, ' / ', atob_token);
+      (atob_token.length > 5) ? verifyToken(atob_token) : (
+              document.getElementById('qsoDetail').innerHTML = 
+                    `<div class="col-lg-12 d-flex align-items-center justify-content-center">`+
+                      `<h2 style="color: red";><strong>Sorry, the QRCode is not valid !!!</strong></h2>`+
+                    `</div>`);
+    }
+
+    function verifyToken(token) {
+      // const apiUrl    = 'https://script.google.com/macros/s/AKfycbwY0umafNVZqRd9Py5dgJbxp20-V7DP9QMj5jd3-zffU8x9fvsZIEpbuMZCscGhQcXz/exec';
+            // const apiUrl    = 'https://script.google.com/macros/s/AKfycbwY0umafNVZqRd9Py5dgJbxp20-V7DP9QMj5jd3-zffU8x9fvsZIEpbuMZCscGhQcXz/exec';
+            // document.getElementById('callsignData').innerHTML = '';
+            // console.log('token to send: ', token);
+            document.getElementById('qsoDetail').innerHTML = '';
+            const action    = '?action=read';
+            const paramToken  = '&token='+token; 
+            document.querySelector('#qsodataspan').textContent = '';
+            document.querySelector('#qsodatahead').textContent = '';
+            $.ajax({
+              url : apiUrl+action+paramToken,
+              
+              method : "GET",
+            //   data : {edit_data: jsonData},
+                // data: function() {
+                //                 action = 'read';
+                                
+                // },
+              success: function(data){
+                //alert(data);
+                // console.log('rawData: ', data);
+                qsoData.push(JSON.parse(JSON.stringify(data.records[1])));
+                callsignData = JSON.parse(JSON.stringify(data.records[0][0]));
+                // console.log('qsoData: ', qsoData);
+                // console.log('callsignData: ', callsignData);
+                
+
+                // let btoa_id = btoa(data.ROW_ID);
+                // var qrcode = new QRCode(`qrcode`, {
+                //     text: `${href}`,
+                //     width: 128,
+                //     height: 128,
+                //     colorDark : "#000000",
+                //     colorLight : "#ffffff",
+                //     correctLevel : QRCode.CorrectLevel.H
+                // });
+                
+                let html = `${callsignData[1]} ${callsignData[2]} - ${callsignData[3]}`;
+                document.getElementById('callsignData').innerHTML = html;
+
+                // console.log('qsoData length: ', qsoData['CALL']);
+                // generatePDFQSLCard = (qsoData, callsignData);
+                // generatePDFQSLCard(qsoData, callsignData);
+                if (qsoData.length > 0) {
+                    judulKolom = setJudulKolom(qsoData);
+                    // console.log('judulKolom: ', judulKolom);
+                    // console.log('qsoData: ', qsoData);
+                    // showAdifData(qsoData, judulKolom);
+                    document.querySelector('#qsodataspan').textContent = callsignData[0] + ' QSO DATA';
+                    document.querySelector('#qsodatahead').textContent = callsignData[0] + ' QSO DATA';
+                    showQSODetail(qsoData, callsignData);
+                    // generatePDFQSLCard(qsoData, callsignData);
+                } else {
+                  document.getElementById('qsoDetail').innerHTML = 
+                    `<div class="col-lg-12 d-flex align-items-center justify-content-center">`+
+                      `<h2 style="color: red";><strong>Sorry, the QRCode is not valid !!!</strong></h2>`+
+                    `</div>`;
+                }
+              },
+              error : function(request, status, error) {
+                console.log(error);
+              }
+            });
+        }
+
         setJudulKolom = (data) => {
             let judul = [];
             // console.log(data.length);
@@ -464,7 +550,7 @@
         
 
         function showQSODetail(data, callsign) {
-            // console.log('qsoData.length: ', qsoData.length);
+            // console.log('qsoData.length: ', data.length);
             // console.log('dataCallsign: ', callsign);
             let delay = 100;
             let html = '';
@@ -472,6 +558,8 @@
             // html += `<p>${callsign[1]} ${callsign[2]} - ${callsign[3]}</p>`;
             
             html = '';
+            let isHide = data.length == 1 ? " style='display:none' " : "  style='display:block'  ";
+            let lebarCol = data.length == 1 ? " col-lg-12 " : " col-lg-9 ";
             for (let i=0; i<data.length; i++) {
                 let thn = data[i].QSO_DATE.toString().substring(0,4);
                 let bln = getMonthName(data[i].QSO_DATE.toString().substring(4,6));
@@ -489,7 +577,7 @@
                 warna_text  = (i % 2 == 0) ? 'black' : 'white';
                 html += 
                     `<div class="row gy-4 pricing-item ${featured} ${mt_4}" data-aos="fade-up" data-aos-delay="${delay}">`+
-                        '<div class="col-lg-9 d-flex align-items-center justify-content-center">'+
+                        `<div class="${lebarCol} d-flex align-items-center justify-content-center">`+
                             `<table width="100%" style="color: ${warna_text};">`+
                                 '<thead style="text-align: center; ">'+
                                     `<th>DATE</th>`+
@@ -511,9 +599,9 @@
                                 '</tbody>'+
                             '</table>'+
                         '</div>'+
-                        '<div class="col-lg-3 d-flex align-items-center justify-content-center">'+
+                        `<div class="col-lg-3 d-flex align-items-center justify-content-center" ${isHide}>`+
                             // '<div class="text-center"><a href="#" class="buy-btn">QSL Card</a></div>'+
-                            `<button type="button" data-id="${data[i].ROW_ID}" onclick="downloadQSL(this)" class="btn buy-btn text-center">QSL Card</button>`+
+                            `<button type="button" data-id="${data[i].ROW_ID}" onclick="downloadQSL(this)" class="btn buy-btn text-center" ${isHide}>QSL Card</button>`+
                         '</div>'+
                     '</div>';
                 delay += 100;
@@ -522,9 +610,10 @@
 
             for (let i=0; i<data.length; i++) {
               let btoa_id = btoa(data[i].TOKEN);
-              console.log(`qrcode: ${domain}/qslcard.html?token=${btoa_id}`);
+              const textContent = `${domain}/index.html?token=${btoa_id}`; 
+              // console.log(`qrcode: ${textContent}`);
               var qrcode = new QRCode(`qrcode${data[i].ROW_ID}`, {
-                  text: `${domain}/qslcard.html?token=${btoa_id}`,
+                  text: `${textContent}`,
                   width: 128,
                   height: 128,
                   colorDark : "#000000",
@@ -621,7 +710,7 @@
           // let base64Image = $('#qrcode img').attr('src');
           var base64Image = $(`#qrcode${data.ROW_ID}`).find('img').prop("src");
           
-          console.log('base64Image: ', base64Image);
+          // console.log('base64Image: ', base64Image);
 
           // var qrcodeImg = new Image();
           // qrcodeImg.src = base64Image; //'https://www.myserver.com/somepath/myImage.png';.
@@ -644,12 +733,12 @@
           // doc.setFontType("bold");
           // // pdf.setFont("helvetica");
           // pdf.setFontType("bold");
-          console.log('data for QSLCard: ', data);
+          // console.log('data for QSLCard: ', data);
           // doc.rect(20,20,10,10);
           doc.setTextColor('red');
           doc.setFontSize(48);
           doc.text(data.CALL, pageSize.width/2, 80, 'center');
-          console.log('call: ', calldata);
+          // console.log('call: ', calldata);
           
           doc.setTextColor('blue');
           doc.setFont("helvetica", "bold");
