@@ -428,12 +428,16 @@
                 // },
               success: function(data){
                 //alert(data);
-                // console.log('qsoData: ', data);
+                console.log('qsoData: ', data);
                 qsoData = JSON.parse(JSON.stringify(data.records[1]));
                 callsignData = JSON.parse(JSON.stringify(data.records[0][0]));
                 // console.log(callsignData);
+                let callsignData1 = callsignData[1] != null ? callsignData[1] : '';
+                let callsignData2 = callsignData[2] != null ? callsignData[2] + ' - ' : '';
+                let callsignData3 = callsignData[3] != null ? callsignData[3] : ''; 
 
-                let html = `${callsignData[1]} ${callsignData[2]} - ${callsignData[3]}`;
+                // let html = `${callsignData[1]} ${callsignData[2]} - ${callsignData[3]}`;
+                let html = `${callsignData1} ${callsignData2} ${callsignData3}`;
                 document.getElementById('callsignData').innerHTML = html;
 
                 // console.log('qsoData: ', qsoData);
@@ -625,27 +629,12 @@
                   correctLevel : QRCode.CorrectLevel.L
               });
             }
-
-            // var qrcode = new QRCode("qrcode", {
-            //     text: "###REPLACE MEEEE###",
-            //     width: 128,
-            //     height: 128,
-            //     colorDark : "#000000",
-            //     colorLight : "#ffffff",
-            //     correctLevel : QRCode.CorrectLevel.H
-            // });
         }
 
         downloadQSL = (e) => {
           let row_id = $(e).attr('data-id');
           const data = qsoData.filter(d => d.ROW_ID === row_id)[0] ;
-          // console.log('donwload request: ', row_id, ':', data);
-          // const urlPDF = "https://docs.google.com/presentation/d/1xugcSzl5oiHD4Ih9FUKH9J2duDINGw3jPB8q1NnybHc/export?format=pdf&portrait=false&size=b5&gridlines=false&slide=id.p1";
-          // window.location = urlPDF;
-          // window.open(urlPDF);
-          generatePDFQSLCard(data, callsignData);
-          // Convert_HTML_To_PDF();
-          
+          generatePDFQSLCard(data, callsignData);          
         }
 
         generatePDFQSLCard = (data, calldata) => {
@@ -666,6 +655,10 @@
           let mode  = data.MODE;
           let rst   = (data.RST_SENT).toString();
 
+          let calldata1 = calldata[1] != null ? calldata[1] : '';
+          let calldata2 = calldata[2] != null ? calldata[2] + ' - ' : '';
+          let calldata3 = calldata[3] != null ? calldata[3] : ''; 
+
           var fileName = 'qslcard.pdf';
           var brsCallsign = 80;
           var brsQSOData  = 116;
@@ -679,76 +672,28 @@
             }
           );
           const qslcardTemplate = "assets/img/QSLCard Template-1.png";
-          // const myimage = "https://drive.google.com/file/d/1EAxABicHo5y5kQhl23twlnDOqq5TjzVO/view?usp=sharing";
-          
-          // doc.internal.events.subscribe('addPage', function() { 
-          //   pageSize = view.doc.internal.pageSize; 
-            
-          // });
-
+      
           var pageSize = doc.internal.pageSize; 
 
-          // doc.setFont("libre", "bold");
-          // doc.text(20, 20, 'Hello world!');
-          // doc.text(20, 30, 'This is client-side Javascript to generate a PDF.');
-          // doc.addImage(myimage, "JPEG", 0, 0, 180, 180);
-
-          // Add new page
-          // doc.addPage();
-          // doc.text(20, 20, 'Visit CodexWorld.com');
-
-          // add Background Image (QSL Card Template)
           doc.addImage(qslcardTemplate, 'JPG', 0, 0, pageSize.width, pageSize.height); 
 
-          // 
-          // add QRCode Image
-          // var qrcode = new QRCode("qrcode", {
-          //     text: "###REPLACE MEEEE###",
-          //     width: 128,
-          //     height: 128,
-          //     colorDark : "#000000",
-          //     colorLight : "#ffffff",
-          //     correctLevel : QRCode.CorrectLevel.H
-          // });
-
-          // let base64Image = $('#qrcode img').attr('src');
           var base64Image = $(`#qrcode${data.ROW_ID}`).find('img').prop("src");
           
-          // console.log('base64Image: ', base64Image);
-
-          // var qrcodeImg = new Image();
-          // qrcodeImg.src = base64Image; //'https://www.myserver.com/somepath/myImage.png';.
-          // qrcodeImg.onload = function(){
-          //   doc.addImage(qrcodeImg , 'png', 100, 100, 40, 10);
-          // };
-
-          // doc.addImage(base64Image, 'png', 100, 100, 40, 40);
-          // console.log(doc.getFontList());
           doc.setDrawColor(255,255,255);  // line color (white)
           doc.setFillColor(255,255,255);  // fill color (white)
-          // doc.rect(20,20,10,10);  // box transparent line 
           doc.rect(pageSize.width-27,pageSize.height-25,21,21, 'F');
 
           doc.setDrawColor(255,0,0);
           doc.addImage(base64Image , 'png', pageSize.width-25, pageSize.height-23, 17, 17);  // src, left, top, width, height
           doc.setFont("Helvetica", "Bold");
-          // doc.setFontStyle("bold");
-          // doc.setFont("helvetica");
-          // doc.setFontType("bold");
-          // // pdf.setFont("helvetica");
-          // pdf.setFontType("bold");
-          // console.log('data for QSLCard: ', data);
-          // doc.rect(20,20,10,10);
           doc.setTextColor('red');
           doc.setFontSize(48);
           doc.text(data.CALL, pageSize.width/2, 80, 'center');
-          // console.log('call: ', calldata);
           
           doc.setTextColor('blue');
           doc.setFont("helvetica", "bold");
-          // doc.setFontType("bold");
           doc.setFontSize(24);
-          doc.text(calldata[1]+' '+calldata[2], pageSize.width/2, 90, 'center');
+          doc.text(calldata1+' '+calldata2, pageSize.width/2, 90, 'center');
 
           doc.setFontSize(14);
           doc.text(tanggal, 31, brsQSOData, 'center');
@@ -758,15 +703,7 @@
           doc.text(mode, 156, brsQSOData, 'center');
           doc.text(rst, 185, brsQSOData, 'center');
 
-          
-
           window.open(doc.output('bloburl', fileName));
-
-        
-          // Save the PDF
-          // doc.save('document.pdf');
-          // doc.output('pdfjsnewwindow', 'document.pdf');
-          // window.open(doc.output('bloburl'));
         }
         
 
@@ -800,13 +737,7 @@
           });
         }
 
-        // console.log(getMonthName(1)); // 👉️ "January"
-
         $(document).ready(function() {
-            // showQSODetail();
-            // console.log('qsoData.length: ', qsoData.length);
-            // console.log('qsoData: ', qsoData);
-
             
         })
   </script>
