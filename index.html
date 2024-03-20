@@ -327,7 +327,9 @@
     let callsign = params.get("callsign");
     let token = params.get("token");
     
-    // console.log('domain: ', domain);
+    console.log('domain: ', domain);
+    console.log('callsign: ', callsign);
+    console.log('token: ', token);
 
     // console.log('entered callsign: ', callsign);
 
@@ -429,7 +431,7 @@
                 // },
               success: function(data){
                 //alert(data);
-                console.log('qsoData: ', data);
+                // console.log('qsoData: ', data);
                 qsoData = JSON.parse(JSON.stringify(data.records[1]));
                 callsignData = JSON.parse(JSON.stringify(data.records[0][0]));
                 // console.log(callsignData);
@@ -441,7 +443,7 @@
                 let html = `${callsignData1} ${callsignData2} ${callsignData3}`;
                 document.getElementById('callsignData').innerHTML = html;
 
-                // console.log('qsoData: ', qsoData);
+                console.log('qsoData: ', qsoData);
                 if (qsoData.length > 0) {
                     judulKolom = setJudulKolom(qsoData);
                     // console.log('judulKolom: ', judulKolom);
@@ -496,10 +498,11 @@
                 // },
               success: function(data){
                 //alert(data);
-                // console.log('rawData: ', data);
-                qsoData.push(JSON.parse(JSON.stringify(data.records[1])));
+                // console.log('verify token rawData: ', data);
+                // qsoData.push(JSON.parse(JSON.stringify(data.records[1])));
+                qsoData = JSON.parse(JSON.stringify(data.records[1]));
                 callsignData = JSON.parse(JSON.stringify(data.records[0][0]));
-                // console.log('qsoData: ', qsoData);
+                console.log('qsoData: ', qsoData);
                 // console.log('callsignData: ', callsignData);
                 
 
@@ -559,7 +562,7 @@
         
 
         function showQSODetail(data, callsign, type=0) {
-            // console.log('qsoData.length: ', data.length);
+            console.log('showQSODetail data: ', data);
             // console.log('dataCallsign: ', callsign);
             let delay = 100;
             let html = '';
